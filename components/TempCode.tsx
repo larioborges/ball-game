@@ -1,5 +1,5 @@
-import Animated, { useSharedValue, withTiming, useAnimatedStyle, Easing } from 'react-native-reanimated';
 import { View, Button, StyleSheet } from 'react-native';
+import Animated, { useSharedValue, withTiming, useAnimatedStyle, Easing } from 'react-native-reanimated';
 
 export default function GameBoard() {
   const randomWidth = useSharedValue(10);

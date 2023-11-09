@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "eslint --ext .ts,.tsx --fix",
+    "lint": "eslint --ext .ts,.tsx . --fix",
     "prettier": "prettier --write **/*.{ts,tsx,json}",
     "format": "npm run lint && npm run prettier"
   },
@@ -26,6 +26,7 @@
     "@babel/core": "^7.20.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "eslint": "^8.53.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-config-universe": "^12.0.0",
     "prettier": "^3.0.3"
   },

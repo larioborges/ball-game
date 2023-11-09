@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Dimensions, TouchableHighlight, Text, StyleSheet } from 'react-native';
+
 import { BALL_SIZE } from '../hooks/useBallSizeState';
 import { BallSizeProps } from '../types/BallSizeProps';
 

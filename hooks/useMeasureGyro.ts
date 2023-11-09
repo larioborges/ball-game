@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { Gyroscope } from 'expo-sensors';
+import { useState, useEffect } from 'react';
 
 export default function useMeasureGyro() {
   const [{ x, y, z }, setData] = useState({
