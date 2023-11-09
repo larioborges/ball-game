@@ -1,4 +1,4 @@
-import { Button, Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 
 import { BallSizeProps } from '../types/BallSizeProps';
 
