@@ -7,6 +7,8 @@ export default function Board(props: BallSizeProps) {
   return (
     <View style={styles.container}>
       <Ball
+        x={10}
+        y={20}
         ballSize={props.ballSize}
         toggleBallSize={props.toggleBallSize}
       />
