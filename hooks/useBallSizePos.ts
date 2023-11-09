@@ -12,11 +12,14 @@ export default function useBallSizeState() {
   const [ballPosY, setBallPosY] = useState('ball_pos_y');
   const [ballPosZ, setBallPosZ] = useState('ball_pos_z');
 
-  const { getItem: getBallPosItem, setItem: setBallPosItem } = useAsyncStorage('ball_pos');
+  const { getItem: getBallPosItem, setItem: setBallPosItem } =
+    useAsyncStorage('ball_pos');
 
   const readBallPosFromStorage = async () => {
     const storedBallPos = await getBallPosItem();
-    const ballPos = !storedBallPos ? { x: 0, y: 0, z: 0 } : JSON.parse(storedBallPos);
+    const ballPos = !storedBallPos
+      ? { x: 0, y: 0, z: 0 }
+      : JSON.parse(storedBallPos);
     setBallPosX(ballPos.x);
     setBallPosY(ballPos.y);
     setBallPosZ(ballPos.z);

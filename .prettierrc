@@ -5,7 +5,7 @@
     "arrowParens": "avoid",
     "embeddedLanguageFormatting": "auto",
     "htmlWhitespaceSensitivity": "strict",
-    "printWidth": 120,
+    "printWidth": 80,
     "useTabs": false,
     "trailingComma": "all",
     "singleAttributePerLine": true,

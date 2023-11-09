@@ -8,17 +8,21 @@ export const BALL_SIZE = {
 
 export default function useBallSizeState() {
   const [ballSize, setBallSize] = useState('ball_size');
-  const { getItem: getBallSizeItem, setItem: setBallSizeItem } = useAsyncStorage('ball_size');
+  const { getItem: getBallSizeItem, setItem: setBallSizeItem } =
+    useAsyncStorage('ball_size');
 
   const readBallSizeFromStorage = async () => {
     const storedBallSize = await getBallSizeItem();
     const ballSize =
-      storedBallSize !== BALL_SIZE.SMALL || storedBallSize !== BALL_SIZE.LARGE ? BALL_SIZE.SMALL : storedBallSize;
+      storedBallSize !== BALL_SIZE.SMALL || storedBallSize !== BALL_SIZE.LARGE
+        ? BALL_SIZE.SMALL
+        : storedBallSize;
     setBallSize(ballSize);
   };
 
   const toggleBallSize = async () => {
-    const newValue = ballSize === BALL_SIZE.SMALL ? BALL_SIZE.LARGE : BALL_SIZE.SMALL;
+    const newValue =
+      ballSize === BALL_SIZE.SMALL ? BALL_SIZE.LARGE : BALL_SIZE.SMALL;
     await setBallSizeItem(newValue);
     setBallSize(newValue);
   };

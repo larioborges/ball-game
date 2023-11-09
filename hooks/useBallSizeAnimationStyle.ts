@@ -9,8 +9,14 @@ export default function useBallSizeAnimationStyle(props) {
 
   return useAnimatedStyle(() => {
     return {
-      width: withTiming(Dimensions.get('window').width * props.widthPerc, config),
-      height: withTiming(Dimensions.get('window').width * props.widthPerc, config),
+      width: withTiming(
+        Dimensions.get('window').width * props.widthPerc,
+        config,
+      ),
+      height: withTiming(
+        Dimensions.get('window').width * props.widthPerc,
+        config,
+      ),
     };
   });
 }
