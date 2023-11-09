@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 import BallSizeToggle from './BallSizeToggle';
 import Ball from './Ball';
-import useBallSizeState from '../hooks/usBallSizeState';
+import useBallSizeState from '../hooks/useBallSizeState';
 
 export default function GameBoard() {
   const { ballSize, toggleBallSize } = useBallSizeState();

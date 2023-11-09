@@ -1,9 +1,9 @@
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { Dimensions, TouchableHighlight, Text, StyleSheet } from 'react-native';
-import { BALL_SIZE } from '../hooks/usBallSizeState';
+import { BALL_SIZE } from '../hooks/useBallSizeState';
+import { BallSizeProps } from '../types/BallSizeProps';
 
-export default function Ball(props) {
+export default function Ball(props: BallSizeProps) {
   const widthPerc = useMemo(() => (props.ballSize === BALL_SIZE.LARGE ? 0.3 : 0.1), [props.ballSize]);
 
   return (
@@ -16,7 +16,7 @@ export default function Ball(props) {
         justifyContent: 'center',
         alignItems: 'center',
       }}
-      underlayColor="#ccc"
+      underlayColor="yellow"
       onPress={() => {
         props.toggleBallSize();
       }}
