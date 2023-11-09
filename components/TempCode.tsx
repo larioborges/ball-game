@@ -1,9 +1,4 @@
-import Animated, {
-  useSharedValue,
-  withTiming,
-  useAnimatedStyle,
-  Easing,
-} from 'react-native-reanimated';
+import Animated, { useSharedValue, withTiming, useAnimatedStyle, Easing } from 'react-native-reanimated';
 import { View, Button, StyleSheet } from 'react-native';
 
 export default function GameBoard() {
@@ -41,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '100%',
     height: '100%',
-    backgroundColor: 'yellow'
+    backgroundColor: 'yellow',
   },
   box: {
     width: 100,

@@ -9,14 +9,14 @@ export default function useMeasureGyro() {
   });
   const [subscription, setSubscription] = useState(null);
 
-//   const _slow = () => Gyroscope.setUpdateInterval(1000);
-//   const _fast = () => Gyroscope.setUpdateInterval(16);
+  //   const _slow = () => Gyroscope.setUpdateInterval(1000);
+  //   const _fast = () => Gyroscope.setUpdateInterval(16);
 
   const _subscribe = () => {
     setSubscription(
       Gyroscope.addListener(gyroscopeData => {
         setData(gyroscopeData);
-      })
+      }),
     );
   };
 

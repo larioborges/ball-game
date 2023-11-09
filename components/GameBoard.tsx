@@ -4,15 +4,18 @@ import Ball from './Ball';
 import useBallSizeState from '../hooks/usBallSizeState';
 
 export default function GameBoard() {
-  const {
-    ballSize,
-    toggleBallSize,
-  } = useBallSizeState();
+  const { ballSize, toggleBallSize } = useBallSizeState();
 
   return (
     <View style={styles.container}>
-      <BallSizeToggle ballSize={ballSize} toggleBallSize={toggleBallSize} />
-      <Ball ballSize={ballSize} toggleBallSize={toggleBallSize} />
+      <BallSizeToggle
+        ballSize={ballSize}
+        toggleBallSize={toggleBallSize}
+      />
+      <Ball
+        ballSize={ballSize}
+        toggleBallSize={toggleBallSize}
+      />
     </View>
   );
 }
@@ -26,6 +29,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '100%',
     height: '100%',
-    backgroundColor: 'yellow'
+    backgroundColor: 'yellow',
   },
 });
