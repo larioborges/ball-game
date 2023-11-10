@@ -50,4 +50,4 @@ I started work on the assessment late, and a combination of environment set up, 
 4. It took a little time getting used to how the styling and layouts work.
 5. I have not done animations in a while, so needed some time to figure out the device motion ball movement.
 6. I enjoyed the assessment, and would love to have an opportunity to work in this space professionally.
-7. I did need to do some updating of my Mac software, as is expected
+7. I did need to do some updating of my Mac software, as is expected. Still I feel React Native has come a long way!
