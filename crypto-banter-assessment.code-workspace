@@ -15,7 +15,7 @@
 			"javascript",
 			"typescript"
 		],
-		"eslint.runtime": "./node_modules/eslint/bin"
+		"eslint.runtime": "./node_modules/eslint"
 	},
 	"extensions": {
 		"recommendations": [
