@@ -9,14 +9,14 @@ import { BallSizeProps } from '../types/BallSizeProps';
 
 export default function Board(props: BallSizeProps) {
   // const { xDelta, yDelta } = useMeasureGyro();
-  const {
-    // acceleration,
-    // accelerationIncludingGravity,
-    // interval,
-    // rotation,
-    distanceTravelled,
-  } = useDeviceMotion();
-  console.log('distanceTravelled', distanceTravelled);
+  // const {
+  // acceleration,
+  // accelerationIncludingGravity,
+  // interval,
+  // rotation,
+  //   distanceTravelled,
+  // } = useDeviceMotion();
+  // console.log('distanceTravelled', distanceTravelled);
 
   const [ballPosX, setBallPosX] = useState(0);
   const [ballPosY, setBallPosY] = useState(0);
@@ -24,40 +24,40 @@ export default function Board(props: BallSizeProps) {
   // const newX = useMemo(() => ballPosX - xDelta, [ballPosX, xDelta]);
   // const newY = useMemo(() => ballPosY - yDelta, [ballPosY, yDelta]);
 
-  const boundBallPos = useCallback(
-    (x: number, y: number) => {
-      const halfWidth = Dimensions.get('window').width / 2;
-      const halfHeight = Dimensions.get('window').height / 2;
+  // const boundBallPos = useCallback(
+  //   (x: number, y: number) => {
+  //     const halfWidth = Dimensions.get('window').width / 2;
+  //     const halfHeight = Dimensions.get('window').height / 2;
 
-      // if (props.ballSize === BALL_SIZE.LARGE) {
-      if (x < -1 * halfWidth) {
-        x = -1 * halfWidth;
-      } else if (x > halfWidth) {
-        x = halfWidth;
-      }
+  //     // if (props.ballSize === BALL_SIZE.LARGE) {
+  //     if (x < -1 * halfWidth) {
+  //       x = -1 * halfWidth;
+  //     } else if (x > halfWidth) {
+  //       x = halfWidth;
+  //     }
 
-      if (y < -1 * halfHeight) {
-        y = -1 * halfHeight;
-      } else if (x > halfHeight) {
-        y = halfHeight;
-      }
-      // } else {
+  //     if (y < -1 * halfHeight) {
+  //       y = -1 * halfHeight;
+  //     } else if (x > halfHeight) {
+  //       y = halfHeight;
+  //     }
+  //     // } else {
 
-      // }
+  //     // }
 
-      return { x, y };
-    },
-    [props.ballSize],
-  );
+  //     return { x, y };
+  //   },
+  //   [props.ballSize],
+  // );
 
-  useEffect(() => {
-    const { x: newX, y: newY } = boundBallPos(
-      ballPosX + distanceTravelled.x,
-      ballPosY + distanceTravelled.y,
-    );
-    setBallPosX(newX);
-    setBallPosY(newY);
-  }, [distanceTravelled.x, distanceTravelled.y]);
+  // useEffect(() => {
+  //   const { x: newX, y: newY } = boundBallPos(
+  //     ballPosX + distanceTravelled.x,
+  //     ballPosY + distanceTravelled.y,
+  //   );
+  //   setBallPosX(newX);
+  //   setBallPosY(newY);
+  // }, [distanceTravelled.x, distanceTravelled.y]);
 
   return (
     <View style={styles.container}>
