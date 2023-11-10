@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 4,
     marginBottom: 12,
+    position: 'absolute',
+    top: 50,
+    zIndex: 2,
   },
   btnText: {
     color: 'white',

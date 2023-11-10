@@ -11,11 +11,13 @@ import { BALL_SIZE } from '../hooks/useBallSizeState';
 import { BallPosProps } from '../types/BallPosProps';
 import { BallSizeProps } from '../types/BallSizeProps';
 
+export function getBallSizePerc(ballSize: string) {
+  return ballSize === BALL_SIZE.LARGE ? 0.3 : 0.1;
+}
+
 export default function Ball(props: BallSizeProps & BallPosProps) {
   const ballWidth = useMemo(
-    () =>
-      Dimensions.get('window').width *
-      (props.ballSize === BALL_SIZE.LARGE ? 0.3 : 0.1),
+    () => Dimensions.get('window').width * getBallSizePerc(props.ballSize),
     [props.ballSize],
   );
 

@@ -1,36 +1,25 @@
 import { DeviceMotion } from 'expo-sensors';
 import { useState, useEffect } from 'react';
 
-import useDistanceTravelled from './useDistanceTravelled';
+const DEVICE_MOTION_INTERVAL = 400;
+const DEVICE_MOTION_SLOWDOWN = 20;
 
-// const DEVICE_MOTION_INTERVAL = 400;
-const DEVICE_MOTION_INTERVAL = 200;
+const calcDistanceTravelled = (time: number, acceleration: number) =>
+  (time * time * -1 * acceleration) / 2;
 
 export default function useDeviceMotion() {
-  //   useEffect(() => {
-  //     DeviceMotion.setUpdateInterval(400);
-  //   }, []);
-
   const [
-    { acceleration, accelerationIncludingGravity, interval, rotation },
+    { accelerationIncludingGravity, xTravelled, yTravelled, zTravelled },
     setData,
   ] = useState({
-    acceleration: {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
     accelerationIncludingGravity: {
       x: 0,
       y: 0,
       z: 0,
     },
-    interval: DEVICE_MOTION_INTERVAL,
-    rotation: {
-      alpha: 0,
-      beta: 0,
-      gamma: 0,
-    },
+    xTravelled: 0,
+    yTravelled: 0,
+    zTravelled: 0,
   });
 
   const [subscription, setSubscription] = useState(null);
@@ -38,15 +27,35 @@ export default function useDeviceMotion() {
   const _subscribe = () => {
     setSubscription(
       DeviceMotion.addListener(deviceMotionData => {
+        const xTravelled = calcDistanceTravelled(
+          DEVICE_MOTION_INTERVAL / DEVICE_MOTION_SLOWDOWN,
+          (accelerationIncludingGravity.x +
+            deviceMotionData.accelerationIncludingGravity.x) /
+            2,
+        );
+        const yTravelled = calcDistanceTravelled(
+          DEVICE_MOTION_INTERVAL / DEVICE_MOTION_SLOWDOWN,
+          (accelerationIncludingGravity.y +
+            deviceMotionData.accelerationIncludingGravity.y) /
+            2,
+        );
+        const zTravelled = calcDistanceTravelled(
+          DEVICE_MOTION_INTERVAL / DEVICE_MOTION_SLOWDOWN,
+          (accelerationIncludingGravity.z +
+            deviceMotionData.accelerationIncludingGravity.z) /
+            2,
+        );
+
         setData({
-          acceleration: deviceMotionData.acceleration,
           accelerationIncludingGravity:
             deviceMotionData.accelerationIncludingGravity,
-          interval: deviceMotionData.interval,
-          rotation: deviceMotionData.rotation,
+          xTravelled,
+          yTravelled,
+          zTravelled,
         });
       }),
     );
+    DeviceMotion.setUpdateInterval(DEVICE_MOTION_INTERVAL);
   };
 
   const _unsubscribe = () => {
@@ -60,23 +69,8 @@ export default function useDeviceMotion() {
   }, []);
 
   return {
-    acceleration,
-    accelerationIncludingGravity,
-    interval,
-    rotation,
-    distanceTravelled: {
-      x: useDistanceTravelled(
-        DEVICE_MOTION_INTERVAL / 10,
-        accelerationIncludingGravity.x,
-      ),
-      y: useDistanceTravelled(
-        DEVICE_MOTION_INTERVAL / 10,
-        accelerationIncludingGravity.y,
-      ),
-      z: useDistanceTravelled(
-        DEVICE_MOTION_INTERVAL / 10,
-        accelerationIncludingGravity.z,
-      ),
-    },
+    xTravelled,
+    yTravelled,
+    zTravelled,
   };
 }

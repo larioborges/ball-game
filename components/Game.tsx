@@ -23,7 +23,6 @@ export default function Game() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 30,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',

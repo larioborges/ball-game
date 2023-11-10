@@ -1,63 +1,49 @@
-import { DeviceMotion } from 'expo-sensors';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 
-import Ball from './Ball';
-import { BALL_SIZE } from '../hooks/useBallSizeState';
+import Ball, { getBallSizePerc } from './Ball';
 import useDeviceMotion from '../hooks/useDeviceMotion';
 import { BallSizeProps } from '../types/BallSizeProps';
 
 export default function Board(props: BallSizeProps) {
-  // const { xDelta, yDelta } = useMeasureGyro();
-  // const {
-  // acceleration,
-  // accelerationIncludingGravity,
-  // interval,
-  // rotation,
-  //   distanceTravelled,
-  // } = useDeviceMotion();
-  // console.log('distanceTravelled', distanceTravelled);
+  const { xTravelled, yTravelled } = useDeviceMotion();
 
   const [ballPosX, setBallPosX] = useState(0);
   const [ballPosY, setBallPosY] = useState(0);
 
-  // const newX = useMemo(() => ballPosX - xDelta, [ballPosX, xDelta]);
-  // const newY = useMemo(() => ballPosY - yDelta, [ballPosY, yDelta]);
+  const windowWidth = useMemo(() => Dimensions.get('window').width, []);
+  const windowHeight = useMemo(() => Dimensions.get('window').height, []);
 
-  // const boundBallPos = useCallback(
-  //   (x: number, y: number) => {
-  //     const halfWidth = Dimensions.get('window').width / 2;
-  //     const halfHeight = Dimensions.get('window').height / 2;
+  const maxX = useMemo(
+    () => windowWidth / 2 - (getBallSizePerc(props.ballSize) * windowWidth) / 2,
+    [props.ballSize, windowWidth],
+  );
+  const minX = useMemo(() => -maxX, [maxX]);
 
-  //     // if (props.ballSize === BALL_SIZE.LARGE) {
-  //     if (x < -1 * halfWidth) {
-  //       x = -1 * halfWidth;
-  //     } else if (x > halfWidth) {
-  //       x = halfWidth;
-  //     }
+  const maxY = useMemo(
+    () =>
+      windowHeight / 2 - (getBallSizePerc(props.ballSize) * windowWidth) / 2,
+    [props.ballSize, windowHeight, windowWidth],
+  );
+  const minY = useMemo(() => -maxY, [maxY]);
 
-  //     if (y < -1 * halfHeight) {
-  //       y = -1 * halfHeight;
-  //     } else if (x > halfHeight) {
-  //       y = halfHeight;
-  //     }
-  //     // } else {
+  useEffect(() => {
+    const newX = (() => {
+      const newX = ballPosX - xTravelled;
+      if (newX < minX) return minX;
+      if (newX > maxX) return maxX;
+      return newX;
+    })();
+    setBallPosX(newX);
 
-  //     // }
-
-  //     return { x, y };
-  //   },
-  //   [props.ballSize],
-  // );
-
-  // useEffect(() => {
-  //   const { x: newX, y: newY } = boundBallPos(
-  //     ballPosX + distanceTravelled.x,
-  //     ballPosY + distanceTravelled.y,
-  //   );
-  //   setBallPosX(newX);
-  //   setBallPosY(newY);
-  // }, [distanceTravelled.x, distanceTravelled.y]);
+    const newY = (() => {
+      const newY = ballPosY + yTravelled;
+      if (newY < minY) return minY;
+      if (newY > maxY) return maxY;
+      return newY;
+    })();
+    setBallPosY(newY);
+  }, [xTravelled, yTravelled]);
 
   return (
     <View style={styles.container}>
