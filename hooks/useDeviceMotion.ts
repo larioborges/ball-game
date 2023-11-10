@@ -1,7 +1,7 @@
 import { DeviceMotion } from 'expo-sensors';
 import { useState, useEffect } from 'react';
 
-const DEVICE_MOTION_INTERVAL = 400;
+export const DEVICE_MOTION_INTERVAL = 400;
 const DEVICE_MOTION_SLOWDOWN = 20;
 
 const calcDistanceTravelled = (time: number, acceleration: number) =>

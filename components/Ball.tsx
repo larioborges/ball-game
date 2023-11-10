@@ -10,6 +10,7 @@ import Animated, {
 import { BALL_SIZE } from '../hooks/useBallSizeState';
 import { BallPosProps } from '../types/BallPosProps';
 import { BallSizeProps } from '../types/BallSizeProps';
+import { DEVICE_MOTION_INTERVAL } from '../hooks/useDeviceMotion';
 
 export function getBallSizePerc(ballSize: string) {
   return ballSize === BALL_SIZE.LARGE ? 0.3 : 0.1;
@@ -22,8 +23,8 @@ export default function Ball(props: BallSizeProps & BallPosProps) {
   );
 
   const posAnimationConfig = {
-    duration: 500,
-    easing: Easing.bezier(0.5, 0.01, 0, 1),
+    duration: DEVICE_MOTION_INTERVAL,
+    easing: Easing.linear,
   };
 
   const ballPosAnimationStyle = useAnimatedStyle(() => {

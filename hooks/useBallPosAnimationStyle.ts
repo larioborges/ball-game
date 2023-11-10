@@ -1,9 +1,10 @@
 import { Easing, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import { DEVICE_MOTION_INTERVAL } from './useDeviceMotion';
 
 export default function useBallPosAnimationStyle(props) {
   const config = {
-    duration: 150,
-    easing: Easing.bezier(0.5, 0.01, 0, 1),
+    duration: DEVICE_MOTION_INTERVAL,
+    easing: Easing.linear,
   };
 
   return useAnimatedStyle(() => {
