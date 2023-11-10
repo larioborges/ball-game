@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"prettier.configPath": "./.prettierrc",
+		"eslint.codeActionsOnSave.rules": [
+			"all"
+		],
+		"eslint.format.enable": true,
+		"eslint.validate": [
+			"JSON",
+			"javascript",
+			"typescript"
+		],
+		"eslint.runtime": "./node_modules/eslint/bin"
+	},
+	"extensions": {
+		"recommendations": [
+			"dbaeumer.vscode-eslint",
+			"esbenp.prettier-vscode",
+			"msjsdiag.vscode-react-native",
+			"expo.vscode-expo-tools"
+		]
+	}
+}
