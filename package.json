@@ -7,8 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "eslint --ext .ts,.tsx . --fix",
-    "prettier": "prettier --write **/*.{ts,tsx,json}",
+    "lint": "eslint --ext .ts,.tsx,.js . --fix",
+    "prettier": "prettier --write **/*.{ts,tsx,json,js}",
     "format": "npm run lint && npm run prettier"
   },
   "dependencies": {
@@ -29,6 +29,9 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-universe": "^12.0.0",
     "prettier": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "private": true
 }

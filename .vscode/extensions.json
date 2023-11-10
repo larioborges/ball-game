@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "msjsdiag.vscode-react-native",
-    "expo.vscode-expo-tools"
+    "expo.vscode-expo-tools",
+    "yzhang.markdown-all-in-one"
   ]
 }
