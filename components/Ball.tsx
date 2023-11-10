@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Dimensions, Text, StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -11,18 +11,11 @@ import { BALL_SIZE } from '../hooks/useBallSizeState';
 import { BallPosProps } from '../types/BallPosProps';
 import { BallSizeProps } from '../types/BallSizeProps';
 
-const getFontSize = ballSize => (ballSize === BALL_SIZE.LARGE ? 50 : 22);
-
 export default function Ball(props: BallSizeProps & BallPosProps) {
   const ballWidth = useMemo(
     () =>
       Dimensions.get('window').width *
       (props.ballSize === BALL_SIZE.LARGE ? 0.3 : 0.1),
-    [props.ballSize],
-  );
-
-  const ballFontSize = useMemo(
-    () => getFontSize(props.ballSize),
     [props.ballSize],
   );
 
@@ -53,14 +46,21 @@ export default function Ball(props: BallSizeProps & BallPosProps) {
     [ballWidth],
   );
 
+  const ballColor = useMemo(
+    () => (props.ballSize === BALL_SIZE.LARGE ? 'red' : 'orange'),
+    [props.ballSize],
+  );
+  const ballColorStyle = { backgroundColor: ballColor };
+
   return (
     <Animated.View
-      style={[styles.ball, ballPosAnimationStyle, ballSizeAnimationStyle]}
-    >
-      <Text style={[styles.text, { fontSize: ballFontSize }]}>
-        {props.ballSize === BALL_SIZE.LARGE ? 'L' : 'S'}
-      </Text>
-    </Animated.View>
+      style={[
+        styles.ball,
+        ballPosAnimationStyle,
+        ballSizeAnimationStyle,
+        ballColorStyle,
+      ]}
+    />
   );
 }
 
@@ -74,9 +74,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
-  },
-  text: {
-    color: 'yellow',
-    fontWeight: '800',
   },
 });
