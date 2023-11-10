@@ -43,3 +43,11 @@ I started work on the assessment late, and a combination of environment set up, 
 3. Code separatation
 
 ## Feedback on my Experience
+
+1. I was pleased that running the application off my phone was so slick and easy.
+2. React Native is in Demand and completes a massive part of my front-end capability (employability-wise and for personal projects). It is exciting!
+3. React Native for web is an exciting prospect for less code duplication.
+4. It took a little time getting used to how the styling and layouts work.
+5. I have not done animations in a while, so needed some time to figure out the device motion ball movement.
+6. I enjoyed the assessment, and would love to have an opportunity to work in this space professionally.
+7. I did need to do some updating of my Mac software, as is expected
