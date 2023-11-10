@@ -28,6 +28,18 @@ Project must be written in **[typescript](https://www.typescriptlang.org/ 'A str
 
 ## Work In Progress
 
-## Enhancements on the Backlog
+I started work on the assessment late, and a combination of environment set up, being new to React Native and some additional enhancements means that I am not 100% complete yet.
+
+### Outstanding Work:
+
+1. Ball movement driven by device motion - IN PROGRESS
+2. Performance tweaking
+3. Code cleanup and stronger typing
+
+## Enhancements
+
+1. Prettier and ESLint
+2. VSCode workspace file
+3. Code separatation
 
 ## Feedback on my Experience
