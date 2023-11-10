@@ -14,8 +14,7 @@
 			"JSON",
 			"javascript",
 			"typescript"
-		],
-		"eslint.runtime": "./node_modules/eslint"
+		]
 	},
 	"extensions": {
 		"recommendations": [
