@@ -65,7 +65,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     width: '100%',
     height: '100%',
-    borderTopWidth: 2,
-    borderColor: 'blue',
   },
 });

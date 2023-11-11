@@ -8,9 +8,9 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { BALL_SIZE } from '../hooks/useBallSizeState';
+import { DEVICE_MOTION_INTERVAL } from '../hooks/useDeviceMotion';
 import { BallPosProps } from '../types/BallPosProps';
 import { BallSizeProps } from '../types/BallSizeProps';
-import { DEVICE_MOTION_INTERVAL } from '../hooks/useDeviceMotion';
 
 export function getBallSizePerc(ballSize: string) {
   return ballSize === BALL_SIZE.LARGE ? 0.3 : 0.1;

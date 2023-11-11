@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginBottom: 12,
     position: 'absolute',
-    top: 50,
+    top: 80,
     zIndex: 2,
   },
   btnText: {
