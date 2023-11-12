@@ -26,15 +26,10 @@ Project must be written in **[typescript](https://www.typescriptlang.org/ 'A str
    - **npm run prettier** Runs a Prettier format on all the TypeScript/JavaScript/JSON code in the project
    - **npm run format** Runs an ESLint and Prettier check and format in sequence across the project
 
-## Work In Progress
+## Outstanding Work
 
-I started work on the assessment late, and a combination of environment set up, being new to React Native and some additional enhancements means that I am not 100% complete yet.
-
-### Outstanding Work:
-
-1. Ball movement driven by device motion - IN PROGRESS
-2. Performance tweaking
-3. Code cleanup and stronger typing
+1. Performance tweaking
+2. Code cleanup and stronger typing
 
 ## Enhancements
 
